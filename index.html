@@ -405,6 +405,30 @@ table{border-radius:6px}
 @media print{#secPop,#guide,.sec-help{display:none!important}}
 </style>
 <style>@media print{.rpt-link{display:none!important}}</style>
+<style id="pieCss">
+.pie{display:flex;flex-direction:column;align-items:center;gap:10px}
+.pie-tot{font:700 13px Inter,"Segoe UI",sans-serif;color:#334155;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:999px;padding:4px 14px}
+.pie-tot b{font-size:16px;color:#0f172a;margin:0 2px}
+.pie svg{width:100%;max-width:230px;height:auto;filter:drop-shadow(0 2px 4px rgba(15,23,42,.12))}
+.pie .seg{cursor:pointer;transition:opacity .15s,transform .15s;transform-origin:100px 100px}
+.pie .seg:hover{opacity:.85;transform:scale(1.03)}
+.pie .lg{max-width:none;width:100%;display:grid;grid-template-columns:1fr;gap:4px}
+.pie.many .lg{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.pie .lg button{min-height:38px;border:1px solid #e2e8f0;background:#fff;font-size:13px}
+.pie .lg button:hover{background:#f8fafc;border-color:#cbd5e1}
+.pie .lg b{font-size:15px;color:#0f172a;margin-left:auto}
+.ana .wide .pie{display:grid;grid-template-columns:260px 1fr;align-items:center;gap:20px}
+.ana .wide .pie .pie-tot{grid-column:1/-1;justify-self:center}
+.ana .wide .pie svg{justify-self:center}
+.pies{grid-template-columns:1fr 1fr!important}
+@media(max-width:760px){
+ .dash,.ana,.pies{grid-template-columns:1fr!important}
+ .ana .wide .pie{display:flex}
+ .pie svg{max-width:250px}
+ .pie.many .lg{grid-template-columns:1fr 1fr}
+ .st small{display:none}
+}
+</style>
 <style id="cloudCss">
 .cl-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid #d7deea;border-radius:99px;padding:3px 10px;font:700 11px Inter,sans-serif;background:#f8fafd;color:#5b6b85;cursor:pointer;white-space:nowrap}
 .cl-chip i{width:8px;height:8px;border-radius:50%;background:#9aa6b8;display:inline-block}
@@ -430,6 +454,38 @@ table{border-radius:6px}
 .cl-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:85;background:#13407e;color:#fff;border-radius:99px;padding:9px 16px;font:700 13px Inter,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25);display:none;gap:10px;align-items:center}
 .cl-bar.on{display:flex}.cl-bar button{border:0;border-radius:99px;padding:5px 12px;font:800 12px Inter,sans-serif;background:#f2b705;color:#1a1a1a;cursor:pointer}
 @media print{.cl-chip,#clM,.cl-bar{display:none!important}}
+</style>
+<style id="pie2Css">
+.pie{display:block!important}
+.pie-hd{display:flex;align-items:baseline;gap:6px;padding:2px 2px 10px;border-bottom:1px solid #e5e9f0;margin-bottom:12px}
+.pie-hd span{font:600 11px Inter,"Segoe UI",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#64748b}
+.pie-hd b{font:800 26px/1 Inter,"Segoe UI",sans-serif;color:#0f2c4c;font-variant-numeric:tabular-nums}
+.pie-hd small{font:600 12px Inter,"Segoe UI",sans-serif;color:#64748b}
+.pie-bd{display:grid;grid-template-columns:minmax(200px,46%) 1fr;gap:18px;align-items:center}
+.pie svg{width:100%;max-width:300px!important;height:auto;filter:none!important;justify-self:center}
+.pie .pie-g{filter:drop-shadow(0 1px 1.5px rgba(15,44,76,.18))}
+.pie .seg{stroke:#fff;stroke-width:1.5;cursor:pointer;transition:opacity .15s;transform:none!important}
+.pie svg:hover .seg{opacity:.55}.pie svg .seg:hover{opacity:1}
+.pie .pl{font:700 13px Inter,"Segoe UI",sans-serif;fill:#0f2c4c;font-variant-numeric:tabular-nums}
+.pie .pin{font:700 12px Inter,"Segoe UI",sans-serif;fill:#fff;pointer-events:none}
+.pie .lg{display:flex!important;flex-direction:column;gap:0!important;width:100%;max-width:none}
+.pie .lg button{display:grid!important;grid-template-columns:10px minmax(70px,1fr) minmax(40px,90px) 34px;align-items:center;gap:10px;min-height:34px;border:0!important;border-bottom:1px solid #eef1f5!important;border-radius:0!important;background:none!important;padding:6px 4px!important;font:600 12.5px Inter,"Segoe UI",sans-serif;color:#1e293b}
+.pie .lg button:last-child{border-bottom:0!important}
+.pie .lg button:hover{background:#f6f8fb!important}
+.pie .lg i{width:10px;height:10px;border-radius:2px}
+.pie .lg em{display:block;height:6px;background:#eef1f5;border-radius:3px;overflow:hidden;width:auto}
+.pie .lg em u{display:block;height:100%;border-radius:3px;opacity:.85}
+.pie .lg b{font:700 14px Inter,"Segoe UI",sans-serif;color:#0f2c4c;text-align:right;font-variant-numeric:tabular-nums;margin:0!important}
+.pie.many .lg{display:grid!important;grid-template-columns:1fr 1fr;column-gap:18px!important}
+.pie.many .lg button:nth-last-child(2){border-bottom:0!important}
+.ana .dcard:not(.wide) .pie-bd{grid-template-columns:1fr}
+.ana .dcard:not(.wide) .pie svg{max-width:260px!important}
+.ana .wide .pie{display:block!important}
+.ana .wide .pie-bd{grid-template-columns:280px 1fr}
+.pies{gap:22px!important}
+.pies .ct{font:700 11.5px Inter,"Segoe UI",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#334155;margin-bottom:8px}
+@media(max-width:1100px){.pie-bd{grid-template-columns:1fr}.pie .lg{margin-top:4px}}
+@media(max-width:760px){.pie.many .lg{grid-template-columns:1fr}.pie.many .lg button:nth-last-child(2){border-bottom:1px solid #eef1f5!important}.ana .wide .pie-bd{grid-template-columns:1fr}}
 </style>
 </head><body>
 <aside id="sb" class="sb"><div class="sb-in">
@@ -543,34 +599,40 @@ function ANA(act){
  const C=CH,T=act.length,pc=n=>T?Math.round(n/T*100):0;
  const nAP=act.filter(d=>GRPOF(d)==='ap').length,nPRA=act.filter(d=>GRPOF(d)==='pra').length,nPP=T-nAP-nPRA;
  const nL=act.filter(d=>SEX(d)==='L').length,nP=T-nL;
- const tile=(l,v,c,q,x)=>`<button class="st" style="--c:${c}" data-q="${q}"${tipA(`${l}: ${v} murid${x?' ('+x+')':''} — klik untuk butiran`)}><span>${l}</span><b>${v}</b>${x?`<small>${x}</small>`:''}<i class="go">Lihat butiran →</i></button>`;
- document.getElementById('aStats').innerHTML=tile('Jumlah murid aktif',T,C.all,'all')+tile('Murid PPKI',nPP,C.pp,'grp:pp',pc(nPP)+'%')+tile('Prasekolah PPKI',nPRA,C.pra,'grp:pra',pc(nPRA)+'%')+tile('Aliran Perdana',nAP,C.ap,'grp:ap',pc(nAP)+'%')+tile('Lelaki',nL,C.L,'sex:L',pc(nL)+'%')+tile('Perempuan',nP,C.P,'sex:P',pc(nP)+'%');
+ const tile=(l,v,c,q,x)=>`<button class="st" style="--c:${c}" data-q="${q}"${tipA(`${l}: ${v} murid — klik untuk butiran`)}><span>${l}</span><b>${v}</b>${x?`<small>${x}</small>`:''}<i class="go">Lihat butiran →</i></button>`;
+ document.getElementById('aStats').innerHTML=tile('Jumlah murid aktif',T,C.all,'all')+tile('Murid PPKI',nPP,C.pp,'grp:pp','murid')+tile('Prasekolah PPKI',nPRA,C.pra,'grp:pra','murid')+tile('Aliran Perdana',nAP,C.ap,'grp:ap','murid')+tile('Lelaki',nL,C.L,'sex:L','murid')+tile('Perempuan',nP,C.P,'sex:P','murid');
  document.getElementById('pKump').innerHTML=donut([['Murid PPKI (7–12)',nPP,C.pp,'grp:pp'],['Prasekolah PPKI',nPRA,C.pra,'grp:pra'],['Aliran Perdana',nAP,C.ap,'grp:ap']]);
  document.getElementById('pJan').innerHTML=donut([['Lelaki',nL,C.L,'sex:L'],['Perempuan',nP,C.P,'sex:P']]);
  const ages={};act.forEach(d=>{const a=UMS(d);ages[a]=ages[a]||{L:0,P:0};ages[a][SEX(d)]++});
  const ak=Object.keys(ages).map(Number).sort((a,b)=>a-b);
- document.getElementById('gUmur').innerHTML=bars(ak.map(a=>a+' thn'),ak.map(a=>'age:'+a),[['Lelaki',C.L,ak.map(a=>ages[a].L),'L'],['Perempuan',C.P,ak.map(a=>ages[a].P),'P']],T);
+ const PPAL=['#2f6db5','#d1495b','#2f9e7a','#d9822b','#7b5ea7','#0f8b8d','#c0392b','#5b8c2a','#c2185b','#1e88e5','#b7791f','#546e7a','#00897b','#8e44ad','#e67e22','#3949ab'];document.getElementById('gUmur').innerHTML=donut(ak.map((a,i)=>[a+' tahun',ages[a].L+ages[a].P,PPAL[i%PPAL.length],'age:'+a]),{seq:1});
  const mL=Array(12).fill(0),mP=Array(12).fill(0);act.forEach(d=>{(SEX(d)==='L'?mL:mP)[+d.dob.slice(5,7)-1]++});
- document.getElementById('gBulan').innerHTML=bars(BLN12,BLN12.map((_,i)=>'mon:'+(i+1)),[['Lelaki',C.L,mL,'L'],['Perempuan',C.P,mP,'P']],T);
+ document.getElementById('gBulan').innerHTML=donut(BLNF.map((m,i)=>[m,mL[i]+mP[i],PPAL[i%PPAL.length],'mon:'+(i+1)]));
  const order=['UUM','USM','UKM','UTM','UPM'],kc={};act.forEach(d=>{kc[K(d)]=(kc[K(d)]||0)+1});
  const extra=Object.keys(kc).filter(k=>!order.includes(k)&&k!=='PRAPPKI'&&!/^D[1-6]$/.test(k)).sort();
  const ks=[...order,...extra,'PRAPPKI','D1','D2','D3','D4','D5','D6'];
  const col=k=>k==='PRAPPKI'?C.pra:/^D/.test(k)?C.ap:C.pp;
  const lab=k=>k==='PRAPPKI'?'PRASEKOLAH':KELAS.includes(k)?k:k+'*';
  const kL=ks.map(k=>act.filter(d=>K(d)===k&&SEX(d)==='L').length),kP=ks.map(k=>act.filter(d=>K(d)===k&&SEX(d)==='P').length);
- document.getElementById('gKelas').innerHTML=bars(ks.map(lab),ks.map(k=>'kelas:'+k),[['Lelaki',C.L,kL,'L'],['Perempuan',C.P,kP,'P']],T,1100,ks.map(col))
-  +`<div class="bl"><span style="color:#64748b">Warna nama kelas:</span><span><i style="background:${C.pp}"></i>PPKI</span><span><i style="background:${C.pra}"></i>Prasekolah</span><span><i style="background:${C.ap}"></i>Aliran Perdana</span></div>`+(extra.length?`<div class="bl note">* ${extra.join(', ')} = murid PPKI yang belum ditetapkan kelas (UUM/USM/UKM/UTM/UPM)</div>`:'');
+ document.getElementById('gKelas').innerHTML=donut(ks.filter(k=>act.some(d=>K(d)===k)).map((k,i)=>[k==='PRAPPKI'?'Prasekolah':KELAS.includes(k)?k:k+'*',act.filter(d=>K(d)===k).length,PPAL[i%PPAL.length],'kelas:'+k]))+(extra.length?`<div class="bl note">* ${extra.join(', ')} = murid PPKI yang belum ditetapkan kelas (UUM/USM/UKM/UTM/UPM)</div>`:'');
 }
-function donut(seg){
- const tot=seg.reduce((t,s)=>t+s[1],0),R=82,r=52,cx=95,cy=95;let a=-Math.PI/2,paths='';
+function donut(seg,opt){
+ opt=opt||{};seg=seg.filter(s=>s[1]>0);const n=seg.length,tot=seg.reduce((t,s)=>t+s[1],0);
+ const CAT=['#0f2c4c','#2b7a8c','#c39b2e','#7a8ca3','#1f5f99','#8a3b48','#4f7d5c','#a8bccd','#5b4f8a','#d8c27a','#3d5a73','#b76e3c'];
+ const seqC=i=>{const t=n<2?0:i/(n-1),A=[15,44,76],Z=[150,190,214];return `rgb(${A.map((v,k)=>Math.round(v+(Z[k]-v)*t)).join(',')})`};
+ seg=seg.map((s,i)=>[s[0],s[1],opt.seq?seqC(i):CAT[i%CAT.length],s[3]]);
+ const out=n<=6,W=out?320:240,H=out?250:240,cx=W/2,cy=H/2,R=out?88:104;let a=-Math.PI/2,paths='',labs='';
  const pt=(ang,rad)=>[cx+rad*Math.cos(ang),cy+rad*Math.sin(ang)];
- seg.forEach(([l,v,c,q])=>{if(!v)return;const da=v/tot*Math.PI*2,p=Math.round(v/tot*100),tip=`${l}: ${v} murid (${p}%) — klik untuk senarai & analisis`;
-  if(v===tot){paths+=`<circle class="seg" data-q="${q}"${tipA(tip)} cx="${cx}" cy="${cy}" r="${(R+r)/2}" fill="none" stroke="${c}" stroke-width="${R-r}"/>`;return}
-  const b=a+da,lg=da>Math.PI?1:0,[x1,y1]=pt(a,R),[x2,y2]=pt(b,R),[x3,y3]=pt(b,r),[x4,y4]=pt(a,r);
-  paths+=`<path class="seg" data-q="${q}"${tipA(tip)} d="M${x1} ${y1}A${R} ${R} 0 ${lg} 1 ${x2} ${y2}L${x3} ${y3}A${r} ${r} 0 ${lg} 0 ${x4} ${y4}Z" fill="${c}" stroke="#fff" stroke-width="2"/>`;
-  const m=a+da/2,[tx,ty]=pt(m,(R+r)/2);if(v/tot>.06)paths+=`<text x="${tx}" y="${ty+4}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" pointer-events="none">${p}%</text>`;a=b});
- return `<div class="donut"><svg viewBox="0 0 190 190" role="img">${tot?paths:`<circle cx="${cx}" cy="${cy}" r="67" fill="none" stroke="#e2e8f0" stroke-width="30"/>`}<text x="${cx}" y="${cy+1}" text-anchor="middle" font-size="28" font-weight="800" fill="#0f172a" pointer-events="none">${tot}</text><text x="${cx}" y="${cy+18}" text-anchor="middle" font-size="11" font-weight="600" fill="#64748b" pointer-events="none">murid</text></svg>
- <div class="lg">${seg.map(([l,v,c,q])=>`<button data-q="${q}"${tipA(`${l}: ${v} murid — klik untuk butiran`)}><i style="background:${c}"></i><span>${l}</span><b>${v}</b><em>${tot?Math.round(v/tot*100):0}%</em></button>`).join('')}</div></div>`;
+ seg.forEach(([l,v,c,q])=>{const da=v/tot*Math.PI*2,tip=`${l}: ${v} murid — klik untuk senarai & analisis`,m=a+da/2;
+  if(v===tot)paths+=`<circle class="seg" data-q="${q}"${tipA(tip)} cx="${cx}" cy="${cy}" r="${R}" fill="${c}"/>`;
+  else{const b=a+da,lg=da>Math.PI?1:0,[x1,y1]=pt(a,R),[x2,y2]=pt(b,R);paths+=`<path class="seg" data-q="${q}"${tipA(tip)} d="M${cx} ${cy}L${x1.toFixed(2)} ${y1.toFixed(2)}A${R} ${R} 0 ${lg} 1 ${x2.toFixed(2)} ${y2.toFixed(2)}Z" fill="${c}"/>`}
+  if(out&&da>=0.12){const [p1x,p1y]=pt(m,R+3),[p2x,p2y]=pt(m,R+16),rt=Math.cos(m)>=0,ex=p2x+(rt?14:-14);
+   labs+=`<polyline points="${p1x.toFixed(1)},${p1y.toFixed(1)} ${p2x.toFixed(1)},${p2y.toFixed(1)} ${ex.toFixed(1)},${p2y.toFixed(1)}" fill="none" stroke="#94a3b8" stroke-width="1"/><circle cx="${p1x.toFixed(1)}" cy="${p1y.toFixed(1)}" r="1.8" fill="#64748b"/><text x="${(ex+(rt?4:-4)).toFixed(1)}" y="${(p2y+5).toFixed(1)}" text-anchor="${rt?'start':'end'}" class="pl">${v}</text>`}
+  else if(da>0.3){const [tx,ty]=pt(m,R*.66);labs+=`<text x="${tx.toFixed(1)}" y="${(ty+4.5).toFixed(1)}" text-anchor="middle" class="pin">${v}</text>`}
+  a+=da});
+ const mx=Math.max(1,...seg.map(s=>s[1]));
+ return `<div class="pie${n>5?' many':''}"><div class="pie-hd"><span>Jumlah</span><b>${tot}</b><small>murid</small></div><div class="pie-bd"><svg viewBox="0 0 ${W} ${H}" role="img">${tot?`<g class="pie-g">${paths}</g>${labs}`:`<circle cx="${cx}" cy="${cy}" r="${R}" fill="#e2e8f0"/>`}</svg>
+ <div class="lg">${seg.map(([l,v,c,q])=>`<button data-q="${q}"${tipA(`${l}: ${v} murid — klik untuk butiran`)}><i style="background:${c}"></i><span>${l}</span><em><u style="width:${(v/mx*100).toFixed(1)}%;background:${c}"></u></em><b>${v}</b></button>`).join('')}</div></div></div>`;
 }
 function bars(cats,qs,series,T,W,cols){
  W=W||560;const n=cats.length,H=W>800?300:250,pl=30,pb=34,pt=22,pr=8,ih=H-pb-pt,bw=Math.min(34,(W-pl-pr)/n*.62);
@@ -580,7 +642,7 @@ function bars(cats,qs,series,T,W,cols){
  let b='';cats.forEach((c,i)=>{const cx=pl+(W-pl-pr)/n*(i+.5);let y=pt+ih,seg='';
   const brk=series.map(s=>`${s[0]} ${s[2][i]}`).join(' · ');
   series.forEach(([nm,co,vals,sk],si)=>{const v=vals[i];if(!v)return;const h=v/top*ih;y-=h;seg+=`<rect class="seg" data-q="${qs[i]}:${sk}"${tipA(`${c} · ${nm}: ${v} murid — klik untuk senarai`)} x="${cx-bw/2}" y="${y}" width="${bw}" height="${h}" rx="3" fill="${co}"/>`});
-  const hit=tot[i]?`<rect class="hit" data-q="${qs[i]}"${tipA(`${c}: ${tot[i]} murid (${T?Math.round(tot[i]/T*100):0}%) · ${brk} — klik untuk butiran`)} x="${cx-(W-pl-pr)/n/2+2}" y="${pt}" width="${(W-pl-pr)/n-4}" height="${ih+pb}" fill="transparent"/>`:'';
+  const hit=tot[i]?`<rect class="hit" data-q="${qs[i]}"${tipA(`${c}: ${tot[i]} murid · ${brk} — klik untuk butiran`)} x="${cx-(W-pl-pr)/n/2+2}" y="${pt}" width="${(W-pl-pr)/n-4}" height="${ih+pb}" fill="transparent"/>`:'';
   b+=`<g>${hit}${seg}<text x="${cx}" y="${y-5}" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a" pointer-events="none">${tot[i]||''}</text><text x="${cx}" y="${H-pb+16}" text-anchor="middle" font-size="${n>12?9.5:11}" font-weight="600" fill="${cols?cols[i]:'#475569'}" pointer-events="none">${c}</text></g>`});
  const leg=`<div class="bl">${series.map(s=>`<span><i style="background:${s[1]}"></i>${s[0]}</span>`).join('')}<span class="hint">Klik palang untuk butiran</span></div>`;
  return `<div class="bc"><svg viewBox="0 0 ${W} ${H}" role="img">${g}${b}</svg>${leg}</div>`;
@@ -606,9 +668,9 @@ function brk(list,keyF,labF,qF,colF){const m={};list.forEach(d=>{const k=keyF(d)
  return ks.map(k=>`<button class="br" data-q="${qF(k)}"${tipA(`${labF(k)}: ${m[k]} murid — klik untuk tapis`)}><span>${labF(k)}</span><i><u style="width:${m[k]/mx*100}%;background:${colF?colF(k):'#3b6ea8'}"></u></i><b>${m[k]}</b></button>`).join('')}
 function open(q){curQ=q;const {f,title,sub,listF}=parse(q);const act=ACT(),list=act.filter(f);rows=list;const s=stat(list);
  const T=act.length,p=T?Math.round(s.n/T*100):0;
- document.getElementById('infoT').textContent=title;document.getElementById('infoS').textContent=sub+' · '+s.n+' daripada '+T+' murid aktif ('+p+'%)';
+ document.getElementById('infoT').textContent=title;document.getElementById('infoS').textContent=sub+' · '+s.n+' daripada '+T+' murid aktif';
  const k=(l,v,c)=>`<div class="ik" style="--c:${c||'#3b6ea8'}"><span>${l}</span><b>${v}</b></div>`;
- document.getElementById('infoK').innerHTML=k('Bilangan murid',s.n,'#0f172a')+k('Peratus keseluruhan',p+'%','#475569')+k('Lelaki',s.L+(s.n?` <small>(${Math.round(s.L/s.n*100)}%)</small>`:''),CH.L)+k('Perempuan',s.P+(s.n?` <small>(${Math.round(s.P/s.n*100)}%)</small>`:''),CH.P)+k('Purata umur',s.avg,'#7c3aed')+k('Julat umur',s.range,'#0e7490')+k('Bulan lahir paling ramai',s.bulan,'#b45309');
+ document.getElementById('infoK').innerHTML=k('Bilangan murid',s.n,'#0f172a')+k('Jumlah murid aktif',T,'#475569')+k('Lelaki',s.L,CH.L)+k('Perempuan',s.P,CH.P)+k('Purata umur',s.avg,'#7c3aed')+k('Julat umur',s.range,'#0e7490')+k('Bulan lahir paling ramai',s.bulan,'#b45309');
  const colK=x=>x==='PRAPPKI'?CH.pra:/^D/.test(x)?CH.ap:CH.pp;
  document.getElementById('infoB').innerHTML=`<div><h4>Mengikut kelas</h4>${brk(list,K,x=>x==='PRAPPKI'?'Prasekolah':x,x=>'kelas:'+x,colK)}</div><div><h4>Mengikut umur</h4>${brk(list,UMS,x=>x+' tahun',x=>'age:'+x)}</div><div><h4>Mengikut jantina</h4>${brk(list,SEX,x=>x==='L'?'Lelaki':'Perempuan',x=>'sex:'+x,x=>CH[x])}</div><div><h4>Mengikut kumpulan</h4>${brk(list,GRPOF,x=>GRPN[x],x=>'grp:'+x,x=>CH[x])}</div>`;
  const lb=document.getElementById('infoList');lb.style.display=listF?'':'none';lb.onclick=()=>{close();listF()};
@@ -655,12 +717,12 @@ return{open,close,table,print}})();
 <div class="stats" id="aStats"></div>
 <div class="dash">
 <div class="dcard"><div class="dt">🏫 Dashboard Mengikut Kelas</div><div id="dKelas"></div></div>
-<div class="dcard"><div class="dt">🥧 Taburan Murid <small>(klik segmen / label untuk butiran)</small></div><div class="pies"><div><div class="ct">Mengikut Kumpulan</div><div id="pKump"></div></div><div><div class="ct">Mengikut Jantina</div><div id="pJan"></div></div></div></div>
+<div class="dcard"><div class="dt">🥧 Taburan Murid <small>(klik graf / nama untuk butiran)</small></div><div class="pies"><div><div class="ct">Mengikut Kumpulan</div><div id="pKump"></div></div><div><div class="ct">Mengikut Jantina</div><div id="pJan"></div></div></div></div>
 </div>
 <div class="ana">
-<div class="dcard"><div class="dt">🎈 Analisis Murid Mengikut Umur <small>(umur persekolahan 2026 · ikut jantina)</small></div><div id="gUmur"></div></div>
-<div class="dcard"><div class="dt">🎂 Analisis Murid Mengikut Bulan Lahir <small>(ikut jantina · klik untuk butiran)</small></div><div id="gBulan"></div></div>
-<div class="dcard wide"><div class="dt">🏫 Analisis Murid Mengikut Kelas <small>(termasuk Prasekolah · ikut jantina · klik untuk butiran)</small></div><div id="gKelas"></div></div>
+<div class="dcard"><div class="dt">🎈 Analisis Murid Mengikut Umur <small>(umur persekolahan 2026 · klik untuk butiran)</small></div><div id="gUmur"></div></div>
+<div class="dcard"><div class="dt">🎂 Analisis Murid Mengikut Bulan Lahir <small>(klik untuk butiran)</small></div><div id="gBulan"></div></div>
+<div class="dcard wide"><div class="dt">🏫 Analisis Murid Mengikut Kelas <small>(termasuk Prasekolah &amp; Aliran Perdana · klik untuk butiran)</small></div><div id="gKelas"></div></div>
 </div>
 <div class="chips"><span class="chl">Murid PPKI ikut kelas:</span><span id="chips" style="display:contents"></span></div>
 
@@ -668,7 +730,7 @@ return{open,close,table,print}})();
 <footer class="gv-foot" id="gvFoot"><div class="gf-in">
 <div><b>SEKOLAH KEBANGSAAN SERI INTAN, KLUANG</b>Program Pendidikan Khas Integrasi (PPKI)<br>86000 Kluang, Johor · Kod Sekolah JBA2044<br>Pejabat Pendidikan Daerah Kluang</div>
 <div><b>MODUL SISTEM</b>Data Murid OKU · PBD · RPI<br>RPH OSC · Jadual Waktu Guru<br>Rujukan Wajib Guru</div>
-<div><b>MAKLUMAT</b>Guru Besar: NORZAIDI BIN JAMILUDIN<br>Data disimpan dalam pelayar peranti ini sahaja</div>
+<div><b>MAKLUMAT</b>Guru Besar: NORZAIDI BIN JAMILUDIN<br>Data disegerak live ke Google Sheet sekolah</div>
 </div><div class="gf-bt"><span>Hak Cipta © <span id="gvYr">2026</span> Program Pendidikan Khas Integrasi SK Seri Intan. Kegunaan dalaman sekolah sahaja.</span><span>Paparan terbaik: Chrome / Edge terkini</span></div></footer>
 <script id="govJs">
 (()=>{const H=['Ahad','Isnin','Selasa','Rabu','Khamis','Jumaat','Sabtu'],B=['Januari','Februari','Mac','April','Mei','Jun','Julai','Ogos','September','Oktober','November','Disember'];
@@ -724,9 +786,7 @@ const byKelas=a=>a.sort((x,y)=>kOrd(K(x))-kOrd(K(y))||K(x).localeCompare(K(y))||
 function kSel(d){const cur=K(d);let o=KELAS.includes(BASE(d))?'':`<option value="${esc(d.kelas)}">${esc(d.kelas)} (asal)</option>`;
  o+=KELAS.map(k=>`<option${k===cur?' selected':''}>${k}</option>`).join('');
  return `<select class="ksel${K(d)!==d.kelas?' chg':''}" onchange="setK('${d.ic}',this.value)">${o}</select>${K(d)!==d.kelas?`<div class="asal">asal: ${esc(d.kelas)}</div>`:''}`}
-function setK(ic,v){const d=DATA.find(x=>x.ic===ic),old=K(d);
- ask({t:'💾 Simpan pertukaran kelas?',m:`Tukar kelas <b>${esc(d.nama)}</b> daripada <b>${esc(old)}</b> kepada <b>${esc(v)}</b>?`,
-  b:[['💾 Ya, simpan','b-mint',()=>{if(v===BASE(d))delete kls[ic];else kls[ic]=v;try{localStorage.setItem(KEY+'_kelas',JSON.stringify(kls))}catch(e){}toast(`💾 Disimpan: ${d.nama} → ${v}`);render()}],['Batal','b-blue',()=>render()]],x:()=>render()})}
+function setK(ic,v){const d=DATA.find(x=>x.ic===ic);if(v===BASE(d))delete kls[ic];else kls[ic]=v;try{localStorage.setItem(KEY+'_kelas',JSON.stringify(kls))}catch(e){}toast(`✅ Disimpan: ${d.nama} → ${v}`);render()}
 let askX=null;
 function ask(o){document.getElementById('askT').innerHTML=o.t;document.getElementById('askM').innerHTML=o.m;askX=o.x||null;
  const B=document.getElementById('askB');B.innerHTML='';o.b.forEach(([l,c,fn])=>{const e=document.createElement('button');e.className='btn '+(c||'b-blue');e.textContent=l;e.onclick=()=>{closeAsk(true);fn&&fn()};B.appendChild(e)});
@@ -3010,16 +3070,20 @@ async function pull(full){const j=await api('GET',{a:'pull',k:cfg.key,since:full
   muted=true;try{applyPath(s,p,v)}finally{muted=false}mods.add(s.mod);if(it.by)lastBy=it.by});
  since=Math.max(since,+j.now||0);saveMeta();if(mods.size)reload([...mods]);return mods.size}
 async function cycle(full){if(!cfg.url||!cfg.key||busy)return;if(!navigator.onLine){setState('err','Tiada internet. Perubahan disimpan dalam peranti dan akan dihantar apabila talian pulih.');return}
- busy=true;setState('sync');try{if(full){await pull(true)}await push();await pull(false);lastOk=Date.now();setState('live')}
- catch(e){setState('err',(e&&e.message||'Tidak dapat menghubungi cloud.')+' · Data kekal dalam peranti ini.')}finally{busy=false}}
-function schedule(){clearInterval(timer);if(cfg.url&&cfg.key)timer=setInterval(()=>{if(!document.hidden)cycle(false)},12000)}
-Storage.prototype.setItem=function(k,v){_set.call(this,k,v);if(this===LS&&!muted&&byLs[k]&&cfg.url){clearTimeout(pushT);pushT=setTimeout(()=>cycle(false),800)}};
+ busy=true;needPush=false;setState('sync');try{if(full){await pull(true)}await push();await pull(false);lastOk=Date.now();setState('live')}
+ catch(e){needPush=true;setState('err',(e&&e.message||'Tidak dapat menghubungi cloud.')+' · Data kekal dalam peranti ini.')}finally{busy=false;if(needPush&&state!=='err')setTimeout(()=>cycle(false),50)}}
+let needPush=false;
+async function tick(){if(!cfg.url||!cfg.key||busy||document.hidden||!navigator.onLine)return;if(needPush)return cycle(false);
+ busy=true;let go=false;try{const j=await api('GET',{a:'ping',k:cfg.key});go=(+j.now||0)>since;lastOk=Date.now();if(!go)setState('live')}
+ catch(e){setState('err',(e&&e.message||'Tidak dapat menghubungi cloud.')+' · Data kekal dalam peranti ini.')}finally{busy=false}if(go)await cycle(false)}
+function schedule(){clearInterval(timer);if(cfg.url&&cfg.key)timer=setInterval(tick,2000)}
+Storage.prototype.setItem=function(k,v){_set.call(this,k,v);if(this===LS&&!muted&&byLs[k]&&cfg.url){clearTimeout(pushT);needPush=true;pushT=setTimeout(()=>cycle(false),300)}};
 function open(){document.getElementById('clUrl').value=cfg.url||'';document.getElementById('clKey').value=cfg.key||'';document.getElementById('clBy').value=cfg.by||'';setState(state);document.getElementById('clM').classList.add('on')}
 function close(){document.getElementById('clM').classList.remove('on')}
 async function save(){const u=document.getElementById('clUrl').value.trim(),k=document.getElementById('clKey').value.trim(),b=document.getElementById('clBy').value.trim();
  if(!/^https:\/\/script\.google(usercontent)?\.com\//.test(u)){setState('err','URL mesti bermula dengan https://script.google.com/');return}
  if(!k){setState('err','Masukkan kunci akses.');return}
- const fresh=u!==cfg.url;cfg={url:u,key:k,by:b};raw('_cloud_cfg',J(cfg));if(fresh){shadow={};since=0;saveMeta()}
+ const fresh=u!==cfg.url;cfg={url:u,key:k,by:b,def:cfg.def};raw('_cloud_cfg',J(cfg));if(fresh){shadow={};since=0;saveMeta()}
  await cycle(true);schedule();if(state==='live'){toast&&toast('☁️ Disambung. Data kini live untuk semua guru.')}}
 function disconnect(){cfg={};raw('_cloud_cfg','{}');clearInterval(timer);setState('off');toast&&toast('Cloud diputuskan. Data kekal dalam peranti ini.')}
 function copyLink(){if(!cfg.url){setState('err','Sambung dahulu.');return}const t=location.href.split('#')[0]+'#cloud='+btoa(unescape(encodeURIComponent(J({url:cfg.url,key:cfg.key}))));
